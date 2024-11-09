@@ -10,7 +10,7 @@ services:
     name: myblog
     runtime: python
     buildCommand: "./build.sh"
-    startCommand: "waitress-serve --port=8000 myblog.wsgi:application"
+    startCommand: "python -m gunicorn mysite.asgi:application -k uvicorn.workers.UvicornWorker"
     envVars:
       - key: DATABASE_URL
         fromDatabase:

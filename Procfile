@@ -1,2 +1,1 @@
-web: waitress-serve --port=8000 myblog.wsgi:application
-
+web: python -m gunicorn myblog.asgi:application -k uvicorn.workers.UvicornWorker
